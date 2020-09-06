@@ -15,8 +15,8 @@ The Pewlett-Hackard Corporation is facing a number of impending retirements.  In
   
 - These tables were structured and related as follows:<br><br>
 <img src=EmployeeDB.png></img><br>
-#### Employee Data Analyses
-The following analyses were done on the data:
+#### Initial Employee Data Analyses
+##### Retiring Employees Analysis
 - The employees that are likely to retire are identified by their birth dates (1952-1955) with their current titles and put into the <b>unique_titles</b> table using the following SQL code:
 ```
 -- Getting Retiring Employees by Title
@@ -44,7 +44,8 @@ FROM retirement_titles as rt
 ORDER BY rt.emp_no, rt.from_date DESC;
 ```
 - There are <b>90,398</b> employees that fall into the retiring category.<br><br>
-- Counts by title for these employees are then produced and put into the <b>retiring_titles</b> table:
+##### Retiring Titles Analysis
+- Counts by title for the retiring employees are then produced and put into the <b>retiring_titles</b> table:
 ```
 -- Getting Retiring Titles
 SELECT COUNT(title), title 
@@ -55,3 +56,37 @@ ORDER BY COUNT(title) DESC;
 ```
   - This is the result of the Retiring Titles analysis:<br><br>
   <img src=/Resources/retiring_titles.png></img><br>
+##### Mentorship Eligibility Analysis
+ - A list of active employees eligible for mentorship (birth date in 1965) was produced by this SQL code:
+ ```
+ SELECT DISTINCT ON (e.emp_no)
+		e.emp_no,
+		e.first_name,
+		e.last_name,
+		e.birth_date,
+		de.from_date,
+		de.to_date,
+		ti.title
+INTO mentorship_eligibility
+FROM employees as e
+INNER JOIN dept_emp de 
+	ON (e.emp_no = de.emp_no)
+INNER JOIN titles ti on 
+	(e.emp_no = ti.emp_no)
+WHERE (de.to_date = '9999-01-01') AND (ti.to_date = '9999-01-01')
+	AND (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
+ORDER BY e.emp_no
+```
+  - There are 1,549 eligible for the mentorship program using the birth date in 1965 criteria.
+#### Additional Employee Data Analyses
+In order to determine if the titles in the mentorship eligibility list realistically mirrors the retiring position titles, we obtained the numbers for the titles in that list:
+```
+-- Get title count from mentorship eligibility table
+SELECT COUNT(emp_no) AS mentorship_count, title
+INTO mentorship_titles
+FROM mentorship_eligibility
+GROUP BY title
+ORDER BY COUNT(emp_no) DESC;
+```
+  - This is the result:<br><br>
+  <img src=/Resources/mentorship_titles.png></img><br>
