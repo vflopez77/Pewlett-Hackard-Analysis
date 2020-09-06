@@ -43,7 +43,7 @@ INTO unique_titles
 FROM retirement_titles as rt
 ORDER BY rt.emp_no, rt.from_date DESC;
 ```
-- There are <b>90,398</b> employees that fall into the retiring category.<br><br>
+- There are <b>90,398</b> employees that fall into the retiring category.<br>
 ##### Retiring Titles Analysis
 - Counts by title for the retiring employees are then produced and put into the <b>retiring_titles</b> table:
 ```
@@ -79,6 +79,7 @@ ORDER BY e.emp_no
 ```
   - There are 1,549 eligible for the mentorship program using the birth date in 1965 criteria.
 #### Additional Employee Data Analyses
+##### Mentorship Title Analysis
 In order to determine if the titles in the mentorship eligibility list realistically mirrors the retiring position titles, we obtained the numbers for the titles in that list:
 ```
 -- Get title count from mentorship eligibility table
@@ -90,3 +91,22 @@ ORDER BY COUNT(emp_no) DESC;
 ```
   - This is the result of the Mentorship Titles analysis:<br><br>
   <img src=/Resources/mentorship_titles.png></img><br>
+##### Mentorship and Retiring Titles Proportions Analysis
+To make sure that the mentorship title proportions reflected the retiring titles, we obtained the percentages over their totals (calculated using subqueries) for both:<br>
+```
+-- Getting percentages for retiring and mentorship titles
+SELECT rt.title,
+rt.count as retiring_count,
+-- Casting INTs as NUMERIC (FLOAT) to get decimal places
+ROUND((CAST(rt.count AS NUMERIC)/CAST((SELECT SUM(count) FROM retiring_titles) AS NUMERIC) * 100),2) as retiring_percentage,
+mt.mentorship_count,
+-- Casting INTs as NUMERIC (FLOAT) to get decimal places
+ROUND((CAST(mt.mentorship_count AS NUMERIC)/CAST((SELECT SUM(mentorship_count) FROM mentorship_titles) AS NUMERIC) * 100),2) as mentorship_percentage
+FROM retiring_titles as rt
+INNER JOIN mentorship_titles as mt
+ON rt.title = mt.title
+ORDER BY rt.count DESC
+```
+  - The retiring titles and mentorship titles showed similar proportions:<br><br>
+  <img src=/Resources/title_proportions.png></img><br>
+  
