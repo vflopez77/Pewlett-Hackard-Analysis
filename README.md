@@ -43,6 +43,7 @@ INTO unique_titles
 FROM retirement_titles as rt
 ORDER BY rt.emp_no, rt.from_date DESC;
 ```
+- There are <b>90,398</b> employees that fall into the retiring category.<br><br>
 - Counts by title for these employees are then produced and put into the <b>retiring_titles</b> table:
 ```
 -- Getting Retiring Titles
