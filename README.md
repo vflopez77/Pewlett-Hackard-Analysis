@@ -92,7 +92,7 @@ ORDER BY COUNT(emp_no) DESC;
   - This is the result of the Mentorship Titles analysis:<br><br>
   <img src=/Resources/mentorship_titles.png></img><br>
 ##### Mentorship and Retiring Titles Proportions Analysis
-To make sure that the mentorship title proportions reflected the retiring titles, we obtained the percentages over their totals for both:<br>
+To make sure that the mentorship title proportions reflected the retiring titles, we obtained the percentages over their totals (calculated using subqueries) for both:<br>
 ```
 -- Getting percentages for retiring and mentorship titles
 SELECT rt.title,
