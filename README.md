@@ -52,5 +52,5 @@ FROM unique_titles
 GROUP BY title
 ORDER BY COUNT(title) DESC;
 ```
-  - This is the result of the Retiring Titles analysis:<br>
+  - This is the result of the Retiring Titles analysis:<br><br>
   <img src=/Resources/retiring_titles.png></img><br>
