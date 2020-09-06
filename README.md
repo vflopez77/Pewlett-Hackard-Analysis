@@ -88,5 +88,5 @@ FROM mentorship_eligibility
 GROUP BY title
 ORDER BY COUNT(emp_no) DESC;
 ```
-  - This is the result:<br><br>
+  - This is the result of the Mentorship Titles analysis:<br><br>
   <img src=/Resources/mentorship_titles.png></img><br>
