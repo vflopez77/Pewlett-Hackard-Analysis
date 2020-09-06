@@ -9,9 +9,11 @@ The Pewlett-Hackard Corporation is facing a number of impending retirements.  In
   - departments.csv containing department names and numbers to the <b>departments</b> table
   - dept_emp.csv containing employee numbers mapped to their departments numbers and dates of membership to the <b>dep_emp</b> table
   - dept_manager.csv mapping department numbers to manager employee numbers and dates of service to the <b>dept_manager</b> table
-  - employees.csv containing emplyee information and hire date to the <b>employees</b> table
-  - salaries.csv containg employee salaries to the <b>salaries</b> table
-  - titles.csv containg employee numbers, titles, and dates to the <b>titles</b> tables
+  - employees.csv containing emplyee information and hire dates to the <b>employees</b> table
+  - salaries.csv contaning employee salaries to the <b>salaries</b> table
+  - titles.csv contaning employee numbers, titles, and dates to the <b>titles</b> tables
   
 - These tables were structured and related as follows:<br><br>
 <img src=EmployeeDB.png></img><br>
+#### Data Analyses
+The following analyses were done on the data:
