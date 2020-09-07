@@ -1,7 +1,7 @@
 # Pewlett-Hackard-Analysis
 
 ## Project Overview
-The Pewlett-Hackard Corporation is facing a number of impending retirements.  In order to plan for this, they need to know what positions are retiring and who may be elibible to mentor their replacements.  Comprehensive employee data has been provided in 6 csv (flat) files for this analysis.
+The Pewlett-Hackard Corporation is facing a number of impending retirements.  In order to plan for this, they need to know what positions are retiring and who may be eligible to mentor their replacements.  Comprehensive employee data has been provided in 6 csv (flat) files for this analysis.
 
 ### Plan for the Employment Retirement Analysis
 #### Relational Database Structure
@@ -11,10 +11,12 @@ The Pewlett-Hackard Corporation is facing a number of impending retirements.  In
   - dept_manager.csv mapping department numbers to manager employee numbers and dates of service to the <b>dept_manager</b> table
   - employees.csv containing emplyee information and hire dates to the <b>employees</b> table
   - salaries.csv contaning employee salaries to the <b>salaries</b> table
-  - titles.csv contaning employee numbers, titles, and dates to the <b>titles</b> tables
+  - titles.csv contaning employee numbers, titles, and dates to the <b>titles</b> tables<br><br>
   
 - These tables were structured and related as follows:<br><br>
-<img src=EmployeeDB.png></img><br>
+<img src=EmployeeDB.png></img><br><br>
+- SQL statements will be written to extract and interpret the data to fulfill the requirements.
+
 ### Initial Employee Data Analyses
 #### Retiring Employees Analysis
 - The employees that are likely to retire are identified by their birth dates (1952-1955) with their current titles and put into the <b>unique_titles</b> table using the following SQL code:
@@ -123,6 +125,8 @@ INNER JOIN mentorship_titles as mt
 ON rt.title = mt.title
 ORDER BY rt.count DESC
 ```
-  - This analysis shows that every mentor would have approximately 50-75 mentees.<br>
+  - This analysis shows that every mentor would have approximately 50-75 mentees.<br><br>
   <img src=/Resources/mentor_load.png></img><br>
   
+### Conclusions<br>
+Pewlett-Hackard is facing a crisis with the impending retirement of thousands of workers.  They are meeting this crisis with eyes open and have compiled employee data to be analyzed for the purpose of meeting the challenge.  Our analysis has shown that a mentorship program could work and the right proportion of titles are represented.  However, the current pool restricted to employees with birth dates in 1965 is too small and will overburden the mentors with 50-75 mentees each.  We recommend increasing the pool of mentors by including birth dates in 1964 and 1966 as well.
