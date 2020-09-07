@@ -15,8 +15,8 @@ The Pewlett-Hackard Corporation is facing a number of impending retirements.  In
   
 - These tables were structured and related as follows:<br><br>
 <img src=EmployeeDB.png></img><br>
-#### Initial Employee Data Analyses
-##### Retiring Employees Analysis
+### Initial Employee Data Analyses
+#### Retiring Employees Analysis
 - The employees that are likely to retire are identified by their birth dates (1952-1955) with their current titles and put into the <b>unique_titles</b> table using the following SQL code:
 ```
 -- Getting Retiring Employees by Title
@@ -44,7 +44,7 @@ FROM retirement_titles as rt
 ORDER BY rt.emp_no, rt.from_date DESC;
 ```
 - There are <b>90,398</b> employees that fall into the retiring category.<br>
-##### Retiring Titles Analysis
+#### Retiring Titles Analysis
 - Counts by title for the retiring employees are then produced and put into the <b>retiring_titles</b> table:
 ```
 -- Getting Retiring Titles
@@ -56,7 +56,7 @@ ORDER BY COUNT(title) DESC;
 ```
   - This is the result of the Retiring Titles analysis:<br><br>
   <img src=/Resources/retiring_titles.png></img><br>
-##### Mentorship Eligibility Analysis
+#### Mentorship Eligibility Analysis
  - A list of active employees eligible for mentorship (birth date in 1965) was produced by this SQL code:
  ```
  SELECT DISTINCT ON (e.emp_no)
@@ -78,8 +78,8 @@ WHERE (de.to_date = '9999-01-01') AND (ti.to_date = '9999-01-01')
 ORDER BY e.emp_no
 ```
   - There are 1,549 eligible for the mentorship program using the birth date in 1965 criteria.
-#### Additional Employee Data Analyses
-##### Mentorship Title Analysis
+### Additional Employee Data Analyses
+#### Mentorship Title Analysis
 In order to determine if the titles in the mentorship eligibility list realistically mirrors the retiring position titles, we obtained the numbers for the titles in that list:
 ```
 -- Get title count from mentorship eligibility table
@@ -91,7 +91,7 @@ ORDER BY COUNT(emp_no) DESC;
 ```
   - This is the result of the Mentorship Titles analysis:<br><br>
   <img src=/Resources/mentorship_titles.png></img><br>
-##### Mentorship and Retiring Titles Proportions Analysis
+#### Mentorship and Retiring Titles Proportions Analysis
 To make sure that the mentorship title proportions reflected the retiring titles, we obtained the percentages over their totals (calculated using subqueries) for both:<br>
 ```
 -- Getting percentages for retiring and mentorship titles
@@ -109,7 +109,7 @@ ORDER BY rt.count DESC
 ```
   - The retiring titles and mentorship titles showed similar proportions:<br><br>
   <img src=/Resources/title_proportions.png></img><br>
-##### Mentor Load Analysys
+#### Mentor Load Analysis
 To vefify the practicality of the proposed mentorship program we are checking the load per mentor for each title:
 ```
 -- Getting percentages of mentorship title vs. retirement titles
