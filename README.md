@@ -123,6 +123,6 @@ INNER JOIN mentorship_titles as mt
 ON rt.title = mt.title
 ORDER BY rt.count DESC
 ```
-  - This analysis shows that every mentor would have approximately 50-75 mentees.
+  - This analysis shows that every mentor would have approximately 50-75 mentees.<br>
   <img src=/Resources/mentor_load.png></img><br>
   
