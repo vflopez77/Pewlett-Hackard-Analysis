@@ -109,4 +109,20 @@ ORDER BY rt.count DESC
 ```
   - The retiring titles and mentorship titles showed similar proportions:<br><br>
   <img src=/Resources/title_proportions.png></img><br>
+##### Mentor Load Analysys
+To vefify the practicality of the proposed mentorship program we are checking the load per mentor for each title:
+```
+-- Getting percentages of mentorship title vs. retirement titles
+SELECT rt.title,
+rt.count as retiring_count,
+mt.mentorship_count,
+-- Divide retiring counts by mentor counts to get mentor load
+rt.count/mt.mentorship_count as mentor_load
+FROM retiring_titles as rt
+INNER JOIN mentorship_titles as mt
+ON rt.title = mt.title
+ORDER BY rt.count DESC
+```
+  - This analysis shows that every mentor would have approximately 50-75 mentees.
+  <img src=/Resources/mentor_load.png></img><br>
   
